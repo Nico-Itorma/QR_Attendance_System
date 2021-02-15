@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blue"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <EditText
+            android:id="@+id/Name_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="30"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz."
+            android:hint="@string/full_name"
+            android:importantForAutofill="no"
+            android:inputType="textFilter"
+            android:textColorHint="#434343"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/idNum_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Name_et"
+            android:ems="30"
+            android:digits="1234567890-"
+            android:hint="@string/id_number"
+            android:inputType="textFilter"
+            android:importantForAutofill="no"
+            android:textColorHint="#434343"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/dept_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idNum_et"
+            android:ems="15"
+            android:hint="@string/department"
+            android:textColorHint="#434343"
+            android:textSize="20sp"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+            android:importantForAutofill="no"
+            android:inputType="textFilter"/>
+
+        <Button
+            android:id="@+id/generate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dept_et"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@color/transparent"
+            android:elevation="1000dp"
+            android:foreground="@drawable/black_border"
+            android:padding="5dp"
+            android:text="@string/generate_qr"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:typeface="serif" />
+
+        <Button
+            android:id="@+id/btn_save_qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/generate"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/transparent"
+            android:elevation="1000dp"
+            android:foreground="@drawable/black_border"
+            android:padding="5dp"
+            android:text="@string/add_to_database"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:typeface="serif" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_gen_qr"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/black_border"
+        android:contentDescription="@string/contentDescription" />
+
+
+</LinearLayout>

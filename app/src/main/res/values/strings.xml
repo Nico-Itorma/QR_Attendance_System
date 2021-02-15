@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">QR Attendance System</string>
+    <string name="qr_attendance_system">QR ATTENDANCE SYSTEM</string>
+    <string name="full_name">Full Name</string>
+    <string name="id_number">ID Number</string>
+    <string name="department">Department</string>
+    <string name="generate_qr">GENERATE QR CODE</string>
+    <string name="add_to_database">ADD TO DATABASE</string>
+    <string name="scan_qr_code">SCAN QR CODE</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="contentDescription">GENERATED QR</string>
+    <string name="add_to_attendance">ADD TO ATTENDANCE</string>
+    <string name="create_new_attendance">CREATE NEW ATTENDANCE</string>
+    <string name="login_time_hh_mm">Login time (HH:MM)</string>
+    <string name="date_mm_dd_yyyy">Date (MM/DD/YYYY)</string>
+    <string name="attendance_name">Attendance Name</string>
+    <string name="date">Date</string>
+    <string name="name">Name</string>
+    <string name="dept">Dept</string>
+    <string name="time">Time</string>
+    <string name="no_attendance_created">No Attendance Created</string>
+    <string name="home">Home</string>
+    <string name="generate_new_qr">Generate new QR</string>
+    <string name="database_of_qr">Database of QR</string>
+    <string name="attendance">Attendance Report</string>
+    <string name="save_qr">Save QR</string>
+    <string name="delete_qr">Delete QR</string>
+    <string name="no_qr_generated">No QR Generated</string>
+    <string name="export_attendance">Export Attendance</string>
+    <string name="delete_attendance">Delete Attendance</string>
+</resources>

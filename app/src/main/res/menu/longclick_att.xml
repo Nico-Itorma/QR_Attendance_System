@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_export"
+        android:title="@string/export_attendance"/>
+
+    <item
+        android:id="@+id/menu_del_att"
+        android:title="@string/delete_attendance"/>
+</menu>

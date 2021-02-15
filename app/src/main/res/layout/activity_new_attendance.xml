@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blue"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/newAct_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:ems="30"
+        android:hint="@string/attendance_name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColorHint="#434343"
+        android:textSize="20sp"
+        app:backgroundTint="@color/black" />
+
+    <EditText
+        android:id="@+id/new_date_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:digits="1234567890-/"
+        android:ems="30"
+        android:hint="@string/date_mm_dd_yyyy"
+        android:importantForAutofill="no"
+        android:inputType="textFilter"
+        android:textColorHint="#434343"
+        android:textSize="20sp"
+        app:backgroundTint="@color/black"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/et_dept_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="30"
+        android:hint="@string/department"
+        android:importantForAutofill="no"
+        android:inputType="textCapCharacters"
+        android:textColorHint="#434343"
+        android:textSize="20sp"
+        app:backgroundTint="@color/black" />
+
+    <EditText
+        android:id="@+id/login_time_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:digits="1234567890:"
+        android:ems="30"
+        android:hint="@string/login_time_hh_mm"
+        android:importantForAutofill="no"
+        android:inputType="textFilter"
+        android:textColorHint="#434343"
+        android:textSize="20sp"
+        app:backgroundTint="@color/black" />
+
+    <Button
+        android:id="@+id/btn_create_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/transparent"
+        android:foreground="@drawable/black_border"
+        android:padding="10dp"
+        android:text="@string/create_new_attendance"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+</LinearLayout>
