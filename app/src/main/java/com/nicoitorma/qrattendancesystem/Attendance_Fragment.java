@@ -2,8 +2,13 @@ package com.nicoitorma.qrattendancesystem;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -18,6 +23,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 /*
@@ -32,6 +40,7 @@ public class Attendance_Fragment extends Fragment {
     List<DataModels> dataList;
     Attendance_Created_Database database;
     String dbName;
+    DataModels data;
 
     @Nullable
     @Override
@@ -82,13 +91,12 @@ public class Attendance_Fragment extends Fragment {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int position = Adapter_Attendance.getPosition();
-        DataModels data = dataList.get(position);
+        data = dataList.get(position);
 
         switch (item.getItemId())
         {
             case R.id.menu_export:
-                //TODO: EXPORT ATTENDANCE AS EXCEL FILE
-                Toast.makeText(getContext(), "Next TODO: Export into excel file", Toast.LENGTH_SHORT).show();
+                new attendance_export().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                 return true;
                 
             case R.id.menu_del_att:
@@ -105,6 +113,64 @@ public class Attendance_Fragment extends Fragment {
             return true;
             default:
                 return super.onContextItemSelected(item);
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public class attendance_export extends AsyncTask<String, Void, Boolean> {
+
+        private final ProgressDialog dialog = new ProgressDialog(getContext());
+
+        @Override
+        protected void onPreExecute() {
+            this.dialog.setMessage("Exporting Attendance...");
+            this.dialog.show();
+        }
+
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            String dbName = data.getActivity_name();
+            ScannedQR_Database database = new ScannedQR_Database(getContext(), dbName);
+            String filename = dbName + ".csv";
+            File filepath = Environment.getExternalStorageDirectory();
+            File dir = new File(filepath.getAbsolutePath() + "/QRSystem/Exported Attendance");
+            if (!dir.exists() ) {
+                dir.mkdirs();
+            }
+            File file = new File(dir, filename);
+            try {
+                CSV_Writer csvWriter = new CSV_Writer(new FileWriter(file));
+                Cursor cursor = database.raw();
+                csvWriter.writeNext(cursor.getColumnNames());
+                while (cursor.moveToNext()) {
+                    String[] arr = new String[cursor.getColumnNames().length];
+                    for (int i = 0; i < cursor.getColumnNames().length; i++) {
+                        arr[i] = cursor.getString(i);
+                    }
+                    csvWriter.writeNext(arr);
+                }
+                csvWriter.close();
+                cursor.close();
+                return true;
+            } catch (IOException e) {
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean success) {
+            if (this.dialog.isShowing()) {
+                Handler handler = new Handler();
+                handler.postDelayed(() -> {
+                    dialog.dismiss();
+                    if (success) {
+                        Toast.makeText(getContext(), "Exported to QRSystem/Exported Attendance", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(getContext(), "Export Failed", Toast.LENGTH_SHORT).show();
+                    }
+                }, 1000);
+            }
         }
     }
 }

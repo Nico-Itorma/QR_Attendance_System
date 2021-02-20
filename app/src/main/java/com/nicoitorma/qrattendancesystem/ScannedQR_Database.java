@@ -83,4 +83,10 @@ public class ScannedQR_Database extends SQLiteOpenHelper {
         cursor.moveToFirst();
         db.close();
     }
+
+    public Cursor raw() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + DB_NAME , new String[]{});
+    }
 }

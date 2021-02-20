@@ -97,7 +97,7 @@ public class DB_Fragment extends Fragment {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bArray, 0, bArray.length);
                 String fileName =  database.getName(qr_file) + ".png";
                 File filepath = Environment.getExternalStorageDirectory();
-                File dir = new File(filepath.getAbsolutePath() + "/QRSystem/");
+                File dir = new File(filepath.getAbsolutePath() + "/QRSystem/Generated QR");
                 if (!dir.exists() ) {
                     dir.mkdirs();
                 }
@@ -110,7 +110,7 @@ public class DB_Fragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(getContext(), "QR saved on QRSystem", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "QR saved on QRSystem/Generated QR", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onContextItemSelected(item);
