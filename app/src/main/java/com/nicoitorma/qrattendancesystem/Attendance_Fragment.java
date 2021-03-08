@@ -46,7 +46,8 @@ public class Attendance_Fragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_attendance, container, false);
-
+        MainActivity.instance.getSupportActionBar().setTitle("Attendance Report");
+        MainActivity.instance.hideBottomVisibility();
         database = new Attendance_Created_Database(getContext());
         dataList = database.getAllData();
 
@@ -133,7 +134,7 @@ public class Attendance_Fragment extends Fragment {
             ScannedQR_Database database = new ScannedQR_Database(getContext(), dbName);
             String filename = dbName + ".csv";
             File filepath = Environment.getExternalStorageDirectory();
-            File dir = new File(filepath.getAbsolutePath() + "/QRSystem/Exported Attendance");
+            File dir = new File(filepath.getAbsolutePath() + "/QR System/Exported Attendance");
             if (!dir.exists() ) {
                 dir.mkdirs();
             }

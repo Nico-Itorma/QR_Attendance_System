@@ -40,7 +40,8 @@ public class DB_Fragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_database, container, false);
-
+        MainActivity.instance.getSupportActionBar().setTitle("QR Database");
+        MainActivity.instance.hideBottomVisibility();
         dbHelper = new Gen_QR_Database(getContext());
         qrFiles = dbHelper.getData();
 
@@ -97,7 +98,7 @@ public class DB_Fragment extends Fragment {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bArray, 0, bArray.length);
                 String fileName =  database.getName(qr_file) + ".png";
                 File filepath = Environment.getExternalStorageDirectory();
-                File dir = new File(filepath.getAbsolutePath() + "/QRSystem/Generated QR");
+                File dir = new File(filepath.getAbsolutePath() + "/QR System/Generated QR");
                 if (!dir.exists() ) {
                     dir.mkdirs();
                 }
@@ -110,7 +111,7 @@ public class DB_Fragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(getContext(), "QR saved on QRSystem/Generated QR", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "QR saved on QR System/Generated QR", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onContextItemSelected(item);

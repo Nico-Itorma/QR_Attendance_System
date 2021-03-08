@@ -1,36 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/blue"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <LinearLayout
+  <LinearLayout
+      android:id="@+id/linear"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintTop_toTopOf="parent">
+
+<!--    <include-->
+<!--        android:id="@+id/toolbar"-->
+<!--        layout="@layout/toolbar" />-->
+  </LinearLayout>
+
+  <FrameLayout
+      android:id="@+id/fragment_container"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:theme="@style/ThemeOverlay.AppCompat.Dark"
+      app:layout_constraintTop_toBottomOf="@id/linear"
+      app:layout_constraintBottom_toBottomOf="parent"/>
+
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+      android:id="@+id/coordinator"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:visibility="visible"
+        app:backgroundTint="@color/mainColor"
+        app:fabAnimationMode="slide"
+        app:fabCradleRoundedCornerRadius="30dp">
 
-        <include layout="@layout/toolbar"/>
+      <com.google.android.material.bottomnavigation.BottomNavigationView
+          android:id="@+id/bottom_view"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="?android:attr/selectableItemBackground"
+          app:itemIconSize="30dp"
+          app:itemIconTint="@color/white"
+          app:itemRippleColor="#D1D1D1"
+          app:itemTextColor="@color/white"
+          app:menu="@menu/bottom_menu" />
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            android:paddingTop="5dp"/>
-    </LinearLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_scan"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/menu_layout" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:fabCustomSize="80dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_qrscan"
+        app:backgroundTint="@color/icon_color"
+        android:visibility="visible"
+        android:scaleType="fitXY"
+        app:maxImageSize="280sp"
+        app:layout_anchor="@id/bottomAppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

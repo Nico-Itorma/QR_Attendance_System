@@ -1,80 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/blue"
-    android:padding="10dp"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/newAct_et"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:ems="30"
-        android:hint="@string/attendance_name"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textColorHint="#434343"
-        android:textSize="20sp"
-        app:backgroundTint="@color/black" />
+        android:layout_height="match_parent"
+        app:cardElevation="60dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/new_date_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:digits="1234567890-/"
-        android:ems="30"
-        android:hint="@string/date_mm_dd_yyyy"
-        android:importantForAutofill="no"
-        android:inputType="textFilter"
-        android:textColorHint="#434343"
-        android:textSize="20sp"
-        app:backgroundTint="@color/black"
-        tools:ignore="TextFields" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="serif"
+                android:text="@string/attendance_name" />
 
-    <EditText
-        android:id="@+id/et_dept_new"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:ems="30"
-        android:hint="@string/department"
-        android:importantForAutofill="no"
-        android:inputType="textCapCharacters"
-        android:textColorHint="#434343"
-        android:textSize="20sp"
-        app:backgroundTint="@color/black" />
+            <EditText
+                android:id="@+id/newAct_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="30"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:background="@drawable/edittext_box"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/login_time_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:digits="1234567890:"
-        android:ems="30"
-        android:hint="@string/login_time_hh_mm"
-        android:importantForAutofill="no"
-        android:inputType="textFilter"
-        android:textColorHint="#434343"
-        android:textSize="20sp"
-        app:backgroundTint="@color/black" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="serif"
+                android:text="@string/date_mm_dd_yyyy"/>
 
-    <Button
-        android:id="@+id/btn_create_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@color/transparent"
-        android:foreground="@drawable/black_border"
-        android:padding="10dp"
-        android:text="@string/create_new_attendance"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/new_date_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="30"
+                android:padding="10dp"
+                android:gravity="start"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/white"
+                android:importantForAutofill="no"
+                tools:ignore="TextFields"
+                app:cornerRadius="10dp"
+                app:rippleColor="@color/transparent"
+                android:textSize="20sp"
+                app:strokeWidth="1dp"/>
 
-</LinearLayout>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="serif"
+                android:text="@string/establishment"/>
+
+            <EditText
+                android:id="@+id/et_dept_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="30"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:background="@drawable/edittext_box"
+                android:importantForAutofill="no"
+                android:inputType="textCapCharacters"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="serif"
+                android:text="@string/login_time_hh_mm"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/login_time_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="30"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                app:backgroundTint="@color/white"
+                android:gravity="start"
+                android:importantForAutofill="no"
+                app:cornerRadius="10dp"
+                app:rippleColor="@color/transparent"
+                app:strokeWidth="1dp"
+                android:textSize="20sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_create_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:text="CREATE NEW ATTENDANCE"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:background="@drawable/black_border"
+                android:backgroundTint="@color/buttonColor"
+                android:elevation="60dp"
+                app:cornerRadius="10dp"
+                app:rippleColor="@color/rippleColor"
+                app:strokeWidth="1dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

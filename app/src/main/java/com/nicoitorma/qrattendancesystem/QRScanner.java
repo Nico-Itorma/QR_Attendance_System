@@ -53,8 +53,6 @@ public class QRScanner extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_qr_scanner, container, false);
-        MainActivity.instance.toolbar.setTitle("QR Scanner");
-        MainActivity.instance.navView.setCheckedItem(R.id.menu_home);
         add_attendance = view.findViewById(R.id.add_attendance);
         surfaceView = view.findViewById(R.id.cameraView);
         content = view.findViewById(R.id.tv_qr_info);
@@ -134,7 +132,7 @@ public class QRScanner extends Fragment {
 
     private void initDetectorsAndSources() {
 
-        barcodeDetector = new BarcodeDetector.Builder(Objects.requireNonNull(getContext())).setBarcodeFormats(Barcode.QR_CODE).build();
+        barcodeDetector = new BarcodeDetector.Builder(getContext()).setBarcodeFormats(Barcode.QR_CODE).build();
 
         cameraSource = new CameraSource.Builder(getContext(), barcodeDetector)
                 .setRequestedPreviewSize(1920, 1080)
@@ -145,9 +143,9 @@ public class QRScanner extends Fragment {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 try {
-                    if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getContext()), Manifest.permission.CAMERA)
+                    if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA)
                             != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new
+                        ActivityCompat.requestPermissions(getActivity(), new
                                 String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
                     } else {
                         cameraSource.start(surfaceView.getHolder());

@@ -1,99 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/blue"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:background="@color/white">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@id/constraint">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="serif"
+            android:text="@string/full_name"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/Name_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="30"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext_box"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz."
-            android:hint="@string/full_name"
+            android:ems="30"
             android:importantForAutofill="no"
             android:inputType="textFilter"
-            android:textColorHint="#434343"
-            android:textSize="20sp" />
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="serif"
+            android:text="@string/id_number"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/idNum_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Name_et"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext_box"
+            android:digits="1234567890-+"
             android:ems="30"
-            android:digits="1234567890-"
-            android:hint="@string/id_number"
-            android:inputType="textFilter"
             android:importantForAutofill="no"
-            android:textColorHint="#434343"
-            android:textSize="20sp" />
+            android:inputType="textFilter"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Name_et" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="serif"
+            android:text="@string/address"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/dept_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idNum_et"
+            android:layout_gravity="center"
+            android:background="@drawable/edittext_box"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 1234567890.,"
             android:ems="15"
-            android:hint="@string/department"
-            android:textColorHint="#434343"
-            android:textSize="20sp"
-            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
             android:importantForAutofill="no"
-            android:inputType="textFilter"/>
+            android:inputType="textFilter"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/idNum_et" />
+    </LinearLayout>
 
-        <Button
+    <LinearLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/linear">
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/generate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/dept_et"
-            android:layout_centerInParent="true"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:text="GENERATE QR"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:typeface="serif"
+            app:background="@drawable/black_border"
+            app:backgroundTint="@color/buttonColor"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toTopOf="@id/iv_gen_qr"
+            app:rippleColor="#707070"
+            app:strokeWidth="2dp" />
+
+        <ImageView
+            android:id="@+id/iv_gen_qr"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:background="@color/transparent"
-            android:elevation="1000dp"
-            android:foreground="@drawable/black_border"
-            android:padding="5dp"
-            android:text="@string/generate_qr"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:typeface="serif" />
+            android:background="@drawable/black_border"
+            app:layout_constraintTop_toBottomOf="@id/generate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save_qr"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/generate"
-            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@color/transparent"
-            android:elevation="1000dp"
-            android:foreground="@drawable/black_border"
-            android:padding="5dp"
-            android:text="@string/add_to_database"
-            android:textColor="@color/black"
+            android:layout_marginTop="40dp"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:text="ADD TO DATABASE"
+            android:textColor="@color/white"
             android:textSize="15sp"
-            android:typeface="serif" />
+            android:typeface="serif"
+            app:background="@drawable/black_border"
+            app:backgroundTint="@color/buttonColor"
+            app:cornerRadius="10dp"
+            app:rippleColor="#707070"
+            app:strokeWidth="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_gen_qr"/>
+    </LinearLayout>
 
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/iv_gen_qr"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/black_border"
-        android:contentDescription="@string/contentDescription" />
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

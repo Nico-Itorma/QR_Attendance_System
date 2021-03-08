@@ -1,3 +1,4 @@
+
 package com.nicoitorma.qrattendancesystem;
 
 import android.annotation.SuppressLint;

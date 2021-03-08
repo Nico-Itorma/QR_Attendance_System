@@ -8,4 +8,9 @@
     <color name="selected">#E657E4</color>
     <color name="default_col">#a6c1ee</color>
     <color name="transparent">#00ffffff</color>
+    <color name="buttonColor">#55BD4B</color>
+    <color name="rippleColor">#d1d1d1</color>
+    <color name="violet">#55BD4B</color>
+    <color name="icon_color">#2FC1ED</color>
+    <color name="mainColor">#2D7EE1</color>
 </resources>

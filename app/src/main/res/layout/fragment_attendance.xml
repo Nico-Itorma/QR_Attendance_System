@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/no_attendance_created"
+        android:textColor="#d1d1d1"
         android:textStyle="bold"
         android:textSize="25sp" />
 

@@ -38,7 +38,8 @@ public class GenQr extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_qr_generator, container, false);
-
+        MainActivity.instance.getSupportActionBar().setTitle("Generate new QR");
+        MainActivity.instance.hideBottomVisibility();
         name_et = view.findViewById(R.id.Name_et);
         idNum_et = view.findViewById(R.id.idNum_et);
         dept_et = view.findViewById(R.id.dept_et);
@@ -56,8 +57,8 @@ public class GenQr extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         //data for generating qr
         String myDATA = "Name: " + name_et.getText().toString().toUpperCase().trim() + "\n" +
-                "ID Number: " + idNum_et.getText().toString() + "\n" +
-                "Department: " + dept_et.getText().toString().toUpperCase().trim();
+                "Phone Number: " + idNum_et.getText().toString() + "\n" +
+                "Address: " + dept_et.getText().toString().trim();
         String ERROR_MESSAGE = "Required field";
 
         switch (view.getId()) {
@@ -109,7 +110,7 @@ public class GenQr extends Fragment implements View.OnClickListener {
                     try {
                         DataModels newQrFiles = new DataModels(1, name_et.getText().toString().toUpperCase().trim(),
                                 idNum_et.getText().toString().trim(),
-                                dept_et.getText().toString().toUpperCase().trim(),
+                                dept_et.getText().toString().trim(),
                                 bArray);
 
                         dbHelper.insertData(newQrFiles);

@@ -1,11 +1,12 @@
 package com.nicoitorma.qrattendancesystem;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.content.Intent;
-import android.os.Bundle;
 
 import java.util.List;
 
@@ -26,13 +27,11 @@ public class Activity_Details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_of_attendance);
-
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.color.mainColor));
         Intent i = getIntent();
         String dbName = i.getStringExtra("DBNAME");
 
-        final Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Scanned QR For " + dbName);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Scanned QR Card for " + dbName);
 
         scannedQRDatabase = new ScannedQR_Database(getApplicationContext(), dbName);
         //GET ALL THE DATA ON ATTENDANCE
@@ -42,7 +41,6 @@ public class Activity_Details extends AppCompatActivity {
     }
 
     public void initUI() {
-
         recyclerView = findViewById(R.id.details_list);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setHasFixedSize(true);

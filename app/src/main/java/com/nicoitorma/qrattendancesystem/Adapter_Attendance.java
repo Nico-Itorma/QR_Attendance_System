@@ -20,7 +20,6 @@ public class Adapter_Attendance extends RecyclerView.Adapter<Adapter_Attendance.
 
     List<DataModels> attendanceDataList;
     private OnClickListener mClickListener;
-    private OnLongCLick mLongClick;
     private static int position;
 
     Adapter_Attendance(List<DataModels> attendanceData) {
@@ -35,19 +34,11 @@ public class Adapter_Attendance extends RecyclerView.Adapter<Adapter_Attendance.
         mClickListener = OnClickListener;
     }
 
-    public interface OnLongCLick {
-        void onLongClick(int position);
-    }
-
-    public void setOnLongClick(Adapter_Attendance.OnLongCLick mLongClick) {
-        this.mLongClick = mLongClick;
-    }
-
     @NonNull
     @Override
     public AttViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.atten_list_template, parent, false);
-        return new AttViewHolder(v, mClickListener, mLongClick);
+        return new AttViewHolder(v, mClickListener);
     }
 
     @Override
@@ -83,7 +74,7 @@ public class Adapter_Attendance extends RecyclerView.Adapter<Adapter_Attendance.
 
         TextView att_name, att_date, att_dept, att_login;
 
-        public AttViewHolder(@NonNull View itemView, final OnClickListener click, final OnLongCLick longCLick) {
+        public AttViewHolder(@NonNull View itemView, final OnClickListener click) {
             super(itemView);
 
             att_name = itemView.findViewById(R.id.attendance_name_tv);

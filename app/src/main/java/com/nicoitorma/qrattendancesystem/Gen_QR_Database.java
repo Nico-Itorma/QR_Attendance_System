@@ -62,6 +62,7 @@ public class Gen_QR_Database extends SQLiteOpenHelper {
         {
             img = c.getBlob(0);
         }
+        db.close();
         return img;
     }
 
@@ -76,9 +77,11 @@ public class Gen_QR_Database extends SQLiteOpenHelper {
             name = c.getString(0);
         }
         if (name != null) {
+            db.close();
             return name.toLowerCase();
         }
         else {
+            db.close();
             return null;
         }
     }
@@ -118,5 +121,6 @@ public class Gen_QR_Database extends SQLiteOpenHelper {
         String query = "DELETE FROM " + DB_NAME + " WHERE " + COLUMN_ID + " = " + qrFiles.getId_qrgen();
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
+        db.close();
     }
 }
