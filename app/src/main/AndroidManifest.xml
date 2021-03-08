@@ -15,17 +15,20 @@
         android:allowBackup="false"
         android:icon="@mipmap/ic_app_icon"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
+        android:supportsRtl="true"
         android:theme="@style/Theme.QRAttendanceSystem">
-        <activity android:name=".Activity_Details"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".update_settings"></activity>
+        <activity
+            android:name=".Activity_Details"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
 
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

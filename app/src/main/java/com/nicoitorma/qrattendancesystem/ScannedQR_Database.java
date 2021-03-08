@@ -1,6 +1,5 @@
 package com.nicoitorma.qrattendancesystem;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -46,6 +45,7 @@ public class ScannedQR_Database extends SQLiteOpenHelper {
     cv.put(COLUMN_DATE, scannedQR.getTime_qr());
 
     database.insert(DB_NAME, null, cv);
+    database.close();
   }
 
   public List<DataModels> getAll() {
@@ -73,15 +73,6 @@ public class ScannedQR_Database extends SQLiteOpenHelper {
     cursor.close();
     db.close();
     return returnList;
-  }
-
-  public void deleteData(DataModels data) {
-    SQLiteDatabase db = this.getWritableDatabase();
-
-    String query = "DELETE FROM " + DB_NAME + " WHERE " + COLUMN_ID + " = " + data.getId_attendance();
-    @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-    cursor.moveToFirst();
-    db.close();
   }
 
   public Cursor raw() {

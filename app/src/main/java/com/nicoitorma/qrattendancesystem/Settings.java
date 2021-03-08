@@ -1,58 +1,46 @@
 package com.nicoitorma.qrattendancesystem;
 
-import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+
+import static android.content.Context.MODE_PRIVATE;
+
 public class Settings extends Fragment {
 
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String TEXT = "text";
-
-    ImageView change_logo;
-    EditText et_change_name;
-    Button save_changes;
+    TextView tv_dept_name, contact;
+    ImageButton edit;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_settings, container, false);
-        MainActivity.instance.getSupportActionBar().setTitle("Settings");
+        View v = inflater.inflate(R.layout.activity_settings, container, false);
+        tv_dept_name = v.findViewById(R.id.tv_dept_name);
+        contact = v.findViewById(R.id.contactNum_tv);
+        edit = v.findViewById(R.id.imageButton);
 
-        change_logo = view.findViewById(R.id.change_logo);
-        et_change_name = view.findViewById(R.id.changename_et);
-        save_changes = view.findViewById(R.id.save_changes);
+        SharedPreferences preferences = MainActivity.instance.getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        String text = preferences.getString("text", "School Department");
+        String contactNum = preferences.getString("contactNum", "");
+        tv_dept_name.setText(text);
+        contact.setText(contactNum);
 
-        change_logo.setOnClickListener(view1 -> {
-            Toast.makeText(getContext(), "TODO: SELECT FROM STORAGE", Toast.LENGTH_SHORT).show();
+        edit.setOnClickListener(view -> {
+            Intent intent = new Intent(getContext(), update_settings.class);
+            intent.putExtra("deptName", text);
+            intent.putExtra("contact", contactNum);
+            startActivity(intent);
         });
-
-        save_changes.setOnClickListener(view1 -> {
-            saveData();
-            et_change_name.setText("");
-            MainActivity.instance.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Home_Fragment()).addToBackStack(null).commit();
-        });
-
-        return view;
-    }
-
-    private void saveData()
-    {
-        SharedPreferences preferences = MainActivity.instance.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-
-        editor.putString(TEXT, et_change_name.getText().toString());
-        editor.apply();
+        return v;
     }
 }

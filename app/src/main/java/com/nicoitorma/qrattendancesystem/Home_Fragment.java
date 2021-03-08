@@ -1,22 +1,17 @@
 package com.nicoitorma.qrattendancesystem;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -26,10 +21,12 @@ import static android.content.Context.MODE_PRIVATE;
 public class Home_Fragment extends Fragment implements View.OnClickListener {
 
     View btn_newAct, btn_genqr, btn_qrdb, btn_attrep;
-    TextView tv_dept;
+    TextView tv_dept, HS_contactNum;
     Fragment fragment;
+    ImageView user_logo;
 
-    public Home_Fragment() {}
+    public Home_Fragment() {
+    }
 
     @Nullable
     @Override
@@ -38,8 +35,12 @@ public class Home_Fragment extends Fragment implements View.OnClickListener {
         MainActivity.instance.getSupportActionBar().setTitle("QR Attendance System");
         SharedPreferences preferences = MainActivity.instance.getSharedPreferences("sharedPrefs", MODE_PRIVATE);
         String text = preferences.getString("text", "School Department");
+        String contactNum = preferences.getString("contactNum", "Contact number");
+        user_logo = view.findViewById(R.id.user_avatar);
         tv_dept = view.findViewById(R.id.tv_college_dept);
+        HS_contactNum = view.findViewById(R.id.HS_contactNumber_tv);
         tv_dept.setText(text);
+        HS_contactNum.setText(contactNum);
         btn_newAct = view.findViewById(R.id.btn_new_activity);
         btn_genqr = view.findViewById(R.id.btn_generate);
         btn_qrdb = view.findViewById(R.id.btn_qrdb);
